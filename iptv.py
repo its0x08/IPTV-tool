@@ -73,7 +73,7 @@ def aliveOrNot(urls):
     return temp
     
 def bruteAccounts(urls,comboFile):
-    for user in tqdm(open(comboFile, 'r').readlines()):
+    for user in open(comboFile, 'r').readlines():
         print "[i] Trying combo: %s" %(user)
         for url in urls:
             try:

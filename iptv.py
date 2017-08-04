@@ -3,7 +3,6 @@ try:
     from urlparse import urlparse
     from duckduckgo import search
     from sys import argv
-    from os import isfile
 except ImportError as e:
     print str(e) 
 

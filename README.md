@@ -1,3 +1,5 @@
-# IPTV_attack_tool
-IPTV bruteforce made easy.
-Coded by 0x08!
+<h1>IPTV_attack_tool v0.3</h1>
+IPTV bruteforce made easy.<br>
+Coded by <i>0x08</i>!
+
+

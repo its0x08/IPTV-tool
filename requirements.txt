@@ -1,4 +1,4 @@
 requests
 git+https://github.com/its0x08/duckduckgo.git
-tqdm
+
 

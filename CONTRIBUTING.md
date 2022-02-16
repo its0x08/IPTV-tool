@@ -1,2 +1,5 @@
-#Everybody can contribute.
-#What we need now are more professionally made dorks!
+# Contributors of the project!
+[0x08](https://github.com/its0x08)
+
+
+### Make sure to add your self on this list before commiting

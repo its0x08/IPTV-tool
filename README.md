@@ -1,5 +1,2 @@
-# IPTV_attack_tool v20200425-1
-IPTV bruteforce made easy.
-Coded by 0x08
-
-
+# IPTV_attack_tool v0.0.1-beta
+IPTV bruteforce tool.

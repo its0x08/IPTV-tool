@@ -1,5 +1,5 @@
-"""IPTV attack tool"""
 # -*- coding: utf-8 -*-
+"""IPTV attack tool"""
 from sys import argv
 from urllib.parse import urlparse
 
